@@ -89,6 +89,22 @@ export const merch: Product[] = [
     status: "preorder",
     image: "/merch/black-metal-ist-krieg-tank.webp",
   },
+  {
+    id: "logo-tank-men",
+    name: "L'Ombra Logo — Tank Top Men",
+    price: 2000, // à confirmer
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    status: "preorder",
+    image: "/merch/logo-tank-men.webp",
+  },
+  {
+    id: "logo-tank-women",
+    name: "L'Ombra Logo — Tank Top Women",
+    price: 2000, // à confirmer
+    sizes: ["XS", "S", "M", "L", "XL"],
+    status: "preorder",
+    image: "/merch/logo-tank-women.webp",
+  },
 ];
 
 // Livraison (centimes). À ajuster selon vos vrais tarifs postaux.
