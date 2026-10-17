@@ -72,10 +72,11 @@ export const events: Event[] = [
         origin: "FR",
         // à valider par le groupe
         bio: {
-          en: "French black metal. Latest album: An Era of Shame (Drowning in Chaos Records).",
-          es: "Black metal francés. Último álbum: An Era of Shame (Drowning in Chaos Records).",
-          ca: "Black metal francès. Últim àlbum: An Era of Shame (Drowning in Chaos Records).",
+          en: "Black metal from Montpellier, France. Latest album: An Era of Shame (Drowning in Chaos Records).",
+          es: "Black metal de Montpellier, Francia. Último álbum: An Era of Shame (Drowning in Chaos Records).",
+          ca: "Black metal de Montpeller. Últim àlbum: An Era of Shame (Drowning in Chaos Records).",
         },
+        links: [{ label: "Bandcamp", url: "https://eternalhunt.bandcamp.com" }],
       },
     ],
     poster: "/events/tarraco-black-metal-night-ii.jpg",
