@@ -63,14 +63,43 @@ export const events: Event[] = [
   },
 ];
 
-export const merch: { name: string; price: string; soldOut?: boolean; image?: string }[] = [
+// ─── BOUTIQUE ────────────────────────────────────────────────────────────────
+// Prix en centimes (2000 = 20,00 €). status :
+//   "available" → en vente   "preorder" → pré-commande payée maintenant   "soldout" → épuisé, non commandable
+export type ProductStatus = "available" | "preorder" | "soldout";
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  sizes?: string[];
+  status: ProductStatus;
+  image?: string;
+};
+
+export const merch: Product[] = [
   {
+    id: "bmik-tank",
     name: "Black Metal Ist Krieg — Tank Top",
-    price: "20 €",
-    soldOut: true, // à vérifier
-    image: "/merch/black-metal-ist-krieg-tank.jpg",
+    price: 2000,
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    status: "preorder",
+    image: "/merch/black-metal-ist-krieg-tank.webp",
   },
 ];
+
+// Livraison (centimes). À ajuster selon vos vrais tarifs postaux.
+export const shipping = {
+  spain: 500,
+  europe: 1200,
+};
+export const europeCountries = [
+  "FR", "PT", "IT", "DE", "BE", "NL", "LU", "AT", "IE", "DK", "SE", "FI", "PL", "CZ", "SK", "HU",
+  "SI", "HR", "RO", "BG", "GR", "CY", "MT", "EE", "LV", "LT",
+] as const;
+
+export function formatPrice(cents: number) {
+  return (cents / 100).toLocaleString("es-ES", { style: "currency", currency: "EUR" });
+}
 
 type Dict = Record<string, string>;
 
@@ -101,6 +130,29 @@ export const t: Record<Lang, Dict> = {
     merchTitle: "Ombra Harvest",
     merchSub: "Official merch. Limited runs, never reprinted.",
     soldOut: "Sold out",
+    preorder: "Pre-order",
+    preorderNote: "Paid now, delivered when the new run is printed.",
+    addToCart: "Add to cart",
+    preorderBtn: "Pre-order",
+    size: "Size",
+    chooseSize: "Choose a size",
+    cart: "Cart",
+    cartEmpty: "Your cart is empty.",
+    remove: "Remove",
+    delivery: "Delivery",
+    pickup: "Pick up at a concert (free)",
+    shipSpain: "Shipping — Spain",
+    shipEurope: "Shipping — Europe",
+    subtotal: "Subtotal",
+    shippingCost: "Shipping",
+    total: "Total",
+    checkout: "Checkout",
+    checkoutLoading: "Redirecting…",
+    checkoutError: "The shop is not open yet. Please try again later.",
+    added: "Added to cart",
+    thanksTitle: "Thank you for your order",
+    thanksText: "You will receive a confirmation e-mail. Pre-orders are delivered as soon as the run is ready.",
+    backHome: "Back to the site",
     bookingTitle: "Play with us",
     bookingSub:
       "Are you a band, a booker or a venue? Tell us about your project. We answer every serious proposal.",
@@ -145,6 +197,29 @@ export const t: Record<Lang, Dict> = {
     merchTitle: "Ombra Harvest",
     merchSub: "Merch oficial. Tiradas limitadas, nunca reeditadas.",
     soldOut: "Agotado",
+    preorder: "Preventa",
+    preorderNote: "Se paga ahora, se entrega cuando se imprima la nueva tirada.",
+    addToCart: "Añadir al carrito",
+    preorderBtn: "Reservar",
+    size: "Talla",
+    chooseSize: "Elige una talla",
+    cart: "Carrito",
+    cartEmpty: "Tu carrito está vacío.",
+    remove: "Quitar",
+    delivery: "Entrega",
+    pickup: "Recoger en un concierto (gratis)",
+    shipSpain: "Envío — España",
+    shipEurope: "Envío — Europa",
+    subtotal: "Subtotal",
+    shippingCost: "Envío",
+    total: "Total",
+    checkout: "Pagar",
+    checkoutLoading: "Redirigiendo…",
+    checkoutError: "La tienda aún no está abierta. Inténtalo más tarde.",
+    added: "Añadido al carrito",
+    thanksTitle: "Gracias por tu pedido",
+    thanksText: "Recibirás un e-mail de confirmación. Las preventas se entregan en cuanto la tirada esté lista.",
+    backHome: "Volver a la web",
     bookingTitle: "Toca con nosotros",
     bookingSub:
       "¿Eres una banda, un booker o una sala? Cuéntanos tu proyecto. Respondemos a toda propuesta seria.",
@@ -189,6 +264,29 @@ export const t: Record<Lang, Dict> = {
     merchTitle: "Ombra Harvest",
     merchSub: "Merch oficial. Tirades limitades, mai reeditades.",
     soldOut: "Esgotat",
+    preorder: "Preventa",
+    preorderNote: "Es paga ara, s'entrega quan s'imprimeixi la nova tirada.",
+    addToCart: "Afegir al carret",
+    preorderBtn: "Reservar",
+    size: "Talla",
+    chooseSize: "Tria una talla",
+    cart: "Carret",
+    cartEmpty: "El teu carret és buit.",
+    remove: "Treure",
+    delivery: "Lliurament",
+    pickup: "Recollir en un concert (gratuït)",
+    shipSpain: "Enviament — Espanya",
+    shipEurope: "Enviament — Europa",
+    subtotal: "Subtotal",
+    shippingCost: "Enviament",
+    total: "Total",
+    checkout: "Pagar",
+    checkoutLoading: "Redirigint…",
+    checkoutError: "La botiga encara no és oberta. Torna-ho a provar més tard.",
+    added: "Afegit al carret",
+    thanksTitle: "Gràcies per la teva comanda",
+    thanksText: "Rebràs un e-mail de confirmació. Les preventes s'entreguen tan aviat com la tirada estigui llesta.",
+    backHome: "Tornar a la web",
     bookingTitle: "Toca amb nosaltres",
     bookingSub:
       "Ets una banda, un booker o una sala? Explica'ns el teu projecte. Responem a tota proposta seriosa.",

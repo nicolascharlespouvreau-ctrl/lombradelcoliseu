@@ -17,7 +17,14 @@ Tout est dans `app/content.ts` :
 ## Mettre en ligne
 Repo GitHub → vercel.com → Add New > Project → importer → Deploy.
 
+## Boutique (Stripe)
+- Produits, tailles, prix (en centimes) et statut dans `app/content.ts` → `merch`.
+  status : "available" (en vente), "preorder" (pré-commande payée tout de suite), "soldout" (épuisé).
+- Frais de port : `shipping` dans `app/content.ts`.
+- Paiement : la clé secrète Stripe va dans Vercel → Settings → Environment Variables → `STRIPE_SECRET_KEY`
+  (jamais dans le code). Sans clé, la boutique affiche « pas encore ouverte ».
+- Les commandes (taille, retrait/envoi, adresse, téléphone, pré-commande) arrivent dans le tableau de bord Stripe → Paiements.
+
 ## À brancher plus tard
 - Newsletter : actuellement simulée (Brevo, Mailchimp ou Supabase).
 - Billetterie : coller le lien (Entradium, Dice, Eventbrite…) dans `ticketUrl`.
-- Merch : vente en ligne via Stripe Payment Links (un lien par produit).

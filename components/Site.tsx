@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import Shop from "@/components/Shop";
 import {
   events,
-  merch,
   genres,
   supporters,
   social,
@@ -311,23 +311,7 @@ export default function Site() {
               <span>{t.merchTitle}</span>
             </h2>
             <p className="section-sub">{t.merchSub}</p>
-            <div className="merch">
-              {merch.map((m) => (
-                <article key={m.name} className="product">
-                  <div className={m.image ? "product-img photo" : "product-img"}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={m.image || "/logo.webp"} alt={m.image ? m.name : ""} loading="lazy" />
-                  </div>
-                  <div className="product-info">
-                    <h3>{m.name}</h3>
-                    <p>
-                      <span className={m.soldOut ? "price struck" : "price"}>{m.price}</span>
-                      {m.soldOut && <span className="badge">{t.soldOut}</span>}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <Shop lang={lang} t={t} />
           </div>
         </section>
 

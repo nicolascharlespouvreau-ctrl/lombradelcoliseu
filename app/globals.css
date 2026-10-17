@@ -196,7 +196,6 @@ h1 {
 .product-img img { width: 62%; height: auto; opacity: .9; filter: drop-shadow(0 0 30px rgba(158, 27, 27, .35)); }
 .product-img.photo { background: #120f0e; }
 .product-img.photo img { width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: none; }
-.product-img span { font-family: var(--black); font-size: 3.4rem; color: rgba(232, 224, 212, .85); transform: rotate(-6deg); text-shadow: 0 0 30px rgba(158, 27, 27, .5); }
 .product-info { padding: 18px 22px 22px; }
 .product-info h3 { font-family: var(--roman); font-size: 1rem; letter-spacing: .06em; margin-bottom: 6px; }
 .price { font-weight: 600; }
@@ -273,3 +272,84 @@ h1 {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ─── Boutique ─────────────────────────────────────────── */
+.product-img { position: relative; }
+.ribbon {
+  position: absolute; top: 14px; left: 14px; padding: 5px 12px; background: var(--blood);
+  font-family: var(--roman); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+}
+.product-img.photo img { object-fit: contain; padding: 4%; }
+.product-price { display: flex; align-items: center; margin-bottom: 6px; }
+.product-note { font-size: .8rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+.sizes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.size {
+  min-width: 44px; padding: 8px 10px; border: 1px solid var(--line); font-size: .8rem; font-weight: 600;
+  color: var(--muted); transition: border-color .2s, color .2s, background .2s;
+}
+.size:hover { border-color: var(--bone); color: var(--bone); }
+.size.active { background: var(--bone); color: var(--bg); border-color: var(--bone); }
+.size-error { font-size: .78rem; color: var(--ember); margin-bottom: 8px; }
+.btn.full { width: 100%; }
+.btn:disabled { opacity: .6; cursor: wait; }
+
+.cart-fab {
+  position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 60px; height: 60px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--blood); color: var(--bone);
+  box-shadow: 0 10px 30px -8px rgba(158, 27, 27, .8); transition: transform .2s;
+}
+.cart-fab:hover { transform: scale(1.06); }
+.cart-count {
+  position: absolute; top: -2px; right: -2px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px;
+  background: var(--bone); color: var(--bg); font-size: .75rem; font-weight: 700; display: grid; place-items: center;
+}
+.toast {
+  position: fixed; left: 50%; bottom: 30px; z-index: 70; transform: translate(-50%, 20px); opacity: 0;
+  padding: 12px 22px; background: var(--card); border: 1px solid var(--blood);
+  font-family: var(--roman); font-size: .82rem; letter-spacing: .12em; pointer-events: none; transition: opacity .25s, transform .25s;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.cart-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(0, 0, 0, .6); backdrop-filter: blur(3px); }
+.cart {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 90; width: min(440px, 100%);
+  display: flex; flex-direction: column; gap: 18px; padding: 24px; overflow-y: auto;
+  background: var(--bg-2); border-left: 1px solid var(--line);
+  transform: translateX(100%); transition: transform .3s; visibility: hidden;
+}
+.cart.open { transform: none; visibility: visible; }
+.cart-head { display: flex; align-items: center; justify-content: space-between; }
+.cart-head h2 { font-family: var(--roman); font-size: 1.3rem; letter-spacing: .14em; text-transform: uppercase; }
+.cart-close { font-size: 2rem; line-height: 1; color: var(--muted); }
+.cart-empty { color: var(--muted); }
+.cart-lines { display: grid; gap: 14px; }
+.cart-line { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.cart-line img { width: 64px; height: 64px; object-fit: contain; background: var(--card); border: 1px solid var(--line); }
+.cart-line-name { font-family: var(--roman); font-size: .9rem; line-height: 1.3; }
+.cart-line-meta { font-size: .78rem; color: var(--muted); display: flex; gap: 8px; align-items: center; margin: 3px 0 8px; }
+.mini-badge { font-size: .62rem; padding: 2px 6px; background: var(--blood); color: var(--bone); letter-spacing: .1em; text-transform: uppercase; }
+.qty { display: flex; align-items: center; gap: 10px; font-size: .85rem; }
+.qty button:not(.cart-remove) { width: 26px; height: 26px; border: 1px solid var(--line); }
+.cart-remove { margin-left: 6px; font-size: .75rem; color: var(--muted); text-decoration: underline; }
+.cart-line-price { font-weight: 600; font-size: .9rem; }
+.delivery { border: 0; display: grid; gap: 8px; }
+.delivery legend { font-family: var(--roman); font-size: .75rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.delivery label { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); font-size: .88rem; cursor: pointer; }
+.delivery label.active { border-color: var(--blood); background: rgba(158, 27, 27, .08); }
+.delivery input { accent-color: var(--blood); }
+.delivery-cost { margin-left: auto; color: var(--muted); }
+.totals { display: grid; gap: 6px; font-size: .9rem; }
+.totals div { display: flex; justify-content: space-between; color: var(--muted); }
+.totals .grand { color: var(--bone); font-weight: 700; font-size: 1.05rem; padding-top: 8px; border-top: 1px solid var(--line); }
+.cart-note { font-size: .78rem; color: var(--muted); }
+.cart-error { font-size: .85rem; color: var(--ember); }
+.secure { text-align: center; font-size: .72rem; color: var(--muted); letter-spacing: .05em; }
+
+.thanks {
+  min-height: 100vh; min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 20px;
+  padding: 40px 20px; text-align: center;
+  background: radial-gradient(ellipse at 50% 30%, rgba(158, 27, 27, .2), transparent 60%), var(--bg);
+}
+.thanks-logo { width: min(220px, 60vw); height: auto; }
+.thanks h1 { font-family: var(--roman); font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.4rem); letter-spacing: .08em; line-height: 1.2; text-shadow: none; }
+.thanks p { max-width: 460px; color: var(--muted); }
