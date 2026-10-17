@@ -7,6 +7,7 @@ import {
   genres,
   supporters,
   socialLinks,
+  merchHomeCount,
   contactEmail,
   t as dict,
   langs,
@@ -338,7 +339,7 @@ export default function Site() {
               <span>{t.merchTitle}</span>
             </h2>
             <p className="section-sub">{t.merchSub}</p>
-            <Shop lang={lang} t={t} />
+            <Shop lang={lang} t={t} limit={merchHomeCount} />
           </div>
         </section>
 

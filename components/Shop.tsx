@@ -84,7 +84,7 @@ function ProductCard({ p, t, onAdd }: { p: Product; t: Dict; onAdd: (p: Product,
   );
 }
 
-export default function Shop({ lang, t }: { lang: Lang; t: Dict }) {
+export default function Shop({ lang, t, limit }: { lang: Lang; t: Dict; limit?: number }) {
   const [cart, setCart] = useState<Line[]>([]);
   const [open, setOpen] = useState(false);
   const [delivery, setDelivery] = useState<Delivery>("pickup");
@@ -154,10 +154,17 @@ export default function Shop({ lang, t }: { lang: Lang; t: Dict }) {
   return (
     <>
       <div className="merch">
-        {merch.map((p) => (
+        {(limit ? merch.slice(0, limit) : merch).map((p) => (
           <ProductCard key={p.id} p={p} t={t} onAdd={add} />
         ))}
       </div>
+      {limit && merch.length > limit && (
+        <p className="see-all">
+          <a className="btn btn-ghost" href="/merch">
+            {t.seeAllMerch.replace("{n}", String(merch.length))}
+          </a>
+        </p>
+      )}
 
       {count > 0 && (
         <button className="cart-fab" onClick={() => setOpen(true)} aria-label={`${t.cart} (${count})`}>

@@ -1,28 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
 import EarlyBird from "@/components/EarlyBird";
-import { events, langs, dateLocale, t as dict, type Lang } from "@/app/content";
+import { useLang, SubHeader, SubFooter } from "@/components/SubPage";
+import { events, dateLocale, t as dict } from "@/app/content";
 
 export default function Concert({ slug }: { slug: string }) {
-  const [lang, setLang] = useState<Lang>("en");
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("ombra-lang") as Lang | null;
-      if (saved && langs.includes(saved)) setLang(saved);
-      else {
-        const nav = navigator.language.slice(0, 2);
-        if (nav === "es" || nav === "ca") setLang(nav);
-      }
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    try {
-      localStorage.setItem("ombra-lang", lang);
-    } catch {}
-  }, [lang]);
+  const [lang, setLang] = useLang();
 
   const e = events.find((x) => x.slug === slug)!;
   const t = dict[lang];
@@ -34,24 +16,7 @@ export default function Concert({ slug }: { slug: string }) {
 
   return (
     <>
-      <div className="grain" aria-hidden="true" />
-      <header className="nav">
-        <a href="/" className="logo" aria-label="L'Ombra del Coliseu">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-sm.webp" alt="" width={44} height={49} className="logo-img" />
-          <span>L&apos;Ombra</span>
-        </a>
-        <a href="/#events" className="back-link">
-          ← {t.back}
-        </a>
-        <div className="lang" role="group" aria-label="Language">
-          {langs.map((l) => (
-            <button key={l} className={l === lang ? "active" : ""} onClick={() => setLang(l)}>
-              {l}
-            </button>
-          ))}
-        </div>
-      </header>
+      <SubHeader lang={lang} setLang={setLang} backHref="/#events" backLabel={t.back} />
 
       <main className="concert">
         <section className="container concert-top">
@@ -153,10 +118,7 @@ export default function Concert({ slug }: { slug: string }) {
         )}
       </main>
 
-      <footer className="concert-foot">
-        <a href="/#events">← {t.back}</a>
-        <p className="copy">© {new Date().getFullYear()} L&apos;Ombra del Coliseu · Tarragona</p>
-      </footer>
+      <SubFooter backHref="/#events" backLabel={t.back} />
     </>
   );
 }

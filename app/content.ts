@@ -131,14 +131,26 @@ export type Product = {
   gallery?: string[]; // vues supplémentaires (miniatures cliquables)
 };
 
+// L'accueil affiche les `merchHomeCount` premiers articles (l'ordre ci-dessous compte) ;
+// la page /merch les affiche tous.
+export const merchHomeCount = 4;
+
 export const merch: Product[] = [
   {
-    id: "bmik-tank",
-    name: "Black Metal Ist Krieg — Tank Top",
-    price: 2000,
+    id: "tarraco-tank",
+    name: "Tarraco Black Metal Night — Tank Top",
+    price: 2000, // à confirmer
     sizes: ["S", "M", "L", "XL", "XXL"],
     status: "preorder",
-    image: "/merch/black-metal-ist-krieg-tank.webp",
+    image: "/merch/tarraco-tank.webp",
+  },
+  {
+    id: "tarraco-mug",
+    name: "Tarraco Black Metal Night — Mug",
+    price: 1000,
+    status: "preorder",
+    image: "/merch/tarraco-mug-1.webp",
+    gallery: ["/merch/tarraco-mug-1.webp", "/merch/tarraco-mug-2.webp", "/merch/tarraco-mug-3.webp"],
   },
   {
     id: "logo-tank-men",
@@ -157,12 +169,12 @@ export const merch: Product[] = [
     image: "/merch/logo-tank-women.webp",
   },
   {
-    id: "tarraco-mug",
-    name: "Tarraco Black Metal Night — Mug",
-    price: 1000,
+    id: "bmik-tank",
+    name: "Black Metal Ist Krieg — Tank Top",
+    price: 2000,
+    sizes: ["S", "M", "L", "XL", "XXL"],
     status: "preorder",
-    image: "/merch/tarraco-mug-1.webp",
-    gallery: ["/merch/tarraco-mug-1.webp", "/merch/tarraco-mug-2.webp", "/merch/tarraco-mug-3.webp"],
+    image: "/merch/black-metal-ist-krieg-tank.webp",
   },
 ];
 
@@ -195,6 +207,8 @@ type Dict = Record<string, string>;
 
 export const t: Record<Lang, Dict> = {
   en: {
+    seeAllMerch: "See all merch ({n})",
+    merchPage: "All merch",
     moreInfo: "More info",
     back: "All events",
     lineupTitle: "Line-up",
@@ -298,6 +312,8 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "View poster",
   },
   es: {
+    seeAllMerch: "Ver todo el merch ({n})",
+    merchPage: "Todo el merch",
     moreInfo: "Más info",
     back: "Todos los conciertos",
     lineupTitle: "Cartel",
@@ -401,6 +417,8 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "Ver cartel",
   },
   ca: {
+    seeAllMerch: "Veure tot el merch ({n})",
+    merchPage: "Tot el merch",
     moreInfo: "Més info",
     back: "Tots els concerts",
     lineupTitle: "Cartell",

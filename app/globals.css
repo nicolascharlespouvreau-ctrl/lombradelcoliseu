@@ -456,3 +456,8 @@ h1 {
   .back-link { display: none; }
   .concert-tickets { padding: 18px; }
 }
+
+/* ─── Lien « tout le merch » + page /merch ─── */
+.see-all { margin-top: 40px; text-align: center; }
+.see-all .btn-ghost:hover { border-color: var(--bone); color: var(--bone); background: transparent; box-shadow: none; }
+.merch-page { padding-top: 30px; }
