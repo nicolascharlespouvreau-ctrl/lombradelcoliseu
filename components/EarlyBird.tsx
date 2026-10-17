@@ -79,7 +79,7 @@ export default function EarlyBird({ e, lang, t }: { e: Event; lang: Lang; t: Dic
               {error === "not_member" && (
                 <>
                   {" "}
-                  <a href="#horde" className="eb-join">
+                  <a href="/#horde" className="eb-join">
                     {t.ebJoin} — {formatPrice(membership.price)}
                   </a>
                 </>

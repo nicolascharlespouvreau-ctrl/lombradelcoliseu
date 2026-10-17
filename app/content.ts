@@ -13,6 +13,15 @@ export const social = {
 // À remplir : adresse e-mail de contact de l'asso (booking, presse).
 export const contactEmail = "";
 
+// Groupe : bio courte dans les 3 langues (facultative) + liens (Bandcamp, Instagram…).
+export type Band = {
+  name: string;
+  genre: string;
+  origin?: string;
+  bio?: Partial<Record<Lang, string>>;
+  links?: { label: string; url: string }[];
+};
+
 export type Event = {
   slug: string;
   title: string;
@@ -22,7 +31,7 @@ export type Event = {
   venue: string;
   address?: string;
   city: string;
-  lineup: { name: string; genre: string; origin?: string }[];
+  lineup: Band[];
   poster?: string; // chemin de l'affiche dans /public
   presale?: string; // prix anticipada
   presaleFee?: string; // frais de gestion billetterie
@@ -36,7 +45,7 @@ export type Event = {
 
 export const events: Event[] = [
   {
-    slug: "between-the-frost-eternal-hunt",
+    slug: "tarraco-black-metal-night-ii",
     title: "Tarraco Black Metal Night II",
     date: "2026-10-30",
     doors: "20:00",
@@ -45,8 +54,29 @@ export const events: Event[] = [
     address: "Carrer de Sant Magí, 12",
     city: "Tarragona",
     lineup: [
-      { name: "Between The Frost", genre: "Black Metal", origin: "TGN" },
-      { name: "Eternal Hunt", genre: "Black Metal", origin: "FR" },
+      {
+        name: "Between The Frost",
+        genre: "Black Metal",
+        origin: "TGN",
+        // à valider par le groupe
+        bio: {
+          en: "Black metal veterans: first demo in 1996, debut album Instinct of Surliness in 1998, latest studio album Inferno's Conflagration.",
+          es: "Veteranos del black metal: primera demo en 1996, primer álbum Instinct of Surliness en 1998, último disco de estudio Inferno's Conflagration.",
+          ca: "Veterans del black metal: primera maqueta el 1996, primer àlbum Instinct of Surliness el 1998, últim disc d'estudi Inferno's Conflagration.",
+        },
+        links: [{ label: "Bandcamp", url: "https://betweenthefrost.bandcamp.com" }],
+      },
+      {
+        name: "Eternal Hunt",
+        genre: "Black Metal",
+        origin: "FR",
+        // à valider par le groupe
+        bio: {
+          en: "French black metal. Latest album: An Era of Shame (Drowning in Chaos Records).",
+          es: "Black metal francés. Último álbum: An Era of Shame (Drowning in Chaos Records).",
+          ca: "Black metal francès. Últim àlbum: An Era of Shame (Drowning in Chaos Records).",
+        },
+      },
     ],
     poster: "/events/tarraco-black-metal-night-ii.jpg",
     presale: "15 €",
@@ -149,6 +179,11 @@ type Dict = Record<string, string>;
 
 export const t: Record<Lang, Dict> = {
   en: {
+    moreInfo: "More info",
+    back: "All events",
+    lineupTitle: "Line-up",
+    directions: "Directions",
+    ticketsTitle: "Tickets",
     ebTitle: "Members early bird",
     ebText: "One ticket per member, while stock lasts. Enter the e-mail you used to join.",
     ebLeft: "{n} left",
@@ -247,6 +282,11 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "View poster",
   },
   es: {
+    moreInfo: "Más info",
+    back: "Todos los conciertos",
+    lineupTitle: "Cartel",
+    directions: "Cómo llegar",
+    ticketsTitle: "Entradas",
     ebTitle: "Early bird socios",
     ebText: "Una entrada por socio, hasta agotar existencias. Indica el e-mail con el que te hiciste socio/a.",
     ebLeft: "Quedan {n}",
@@ -345,6 +385,11 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "Ver cartel",
   },
   ca: {
+    moreInfo: "Més info",
+    back: "Tots els concerts",
+    lineupTitle: "Cartell",
+    directions: "Com arribar-hi",
+    ticketsTitle: "Entrades",
     ebTitle: "Early bird socis",
     ebText: "Una entrada per soci, fins a exhaurir existències. Indica l'e-mail amb què et vas fer soci/a.",
     ebLeft: "Queden {n}",

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Shop from "@/components/Shop";
 import Horde from "@/components/Horde";
-import EarlyBird from "@/components/EarlyBird";
 import {
   events,
   genres,
@@ -79,7 +78,7 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
           {d.weekday} · {e.venue}
           {e.address ? `, ${e.address}` : ""}, {e.city}
         </p>
-        <h3>{e.title}</h3>
+        <h3>{e.status === "upcoming" ? <a href={`/concerts/${e.slug}`}>{e.title}</a> : e.title}</h3>
         {e.lineup.length > 0 && e.lineup.every((b) => e.title.includes(b.name)) && (
           <p className="event-genres">{Array.from(new Set(e.lineup.map((b) => b.genre))).join(" · ")}</p>
         )}
@@ -117,10 +116,12 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
             )}
           </div>
         )}
-        {e.status === "upcoming" && e.earlyBird && <EarlyBird e={e} lang={lang} t={t} />}
       </div>
       {e.status === "upcoming" && (
         <div className="event-cta">
+          <a className="btn btn-ghost" href={`/concerts/${e.slug}`}>
+            {t.moreInfo}
+          </a>
           {e.ticketUrl ? (
             <a className="btn" href={e.ticketUrl} target="_blank" rel="noreferrer">
               {t.tickets}
@@ -237,7 +238,7 @@ export default function Site() {
             </h1>
             <p className="hero-sub">{t.heroSub}</p>
             {next && (
-              <a href="#events" className="hero-next">
+              <a href={`/concerts/${next.slug}`} className="hero-next">
                 <span className="hero-next-label">{t.nextShow}</span>
                 <span className="hero-next-title">{next.title}</span>
                 {next.lineup.length > 0 && next.title !== next.lineup.map((b) => b.name).join(" + ") && (
