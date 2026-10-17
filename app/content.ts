@@ -31,7 +31,7 @@ export type Event = {
 export const events: Event[] = [
   {
     slug: "between-the-frost-eternal-hunt",
-    title: "Between The Frost + Eternal Hunt",
+    title: "Tarraco Black Metal Night II",
     date: "2026-10-30",
     doors: "20:00",
     start: "20:30",
@@ -43,7 +43,7 @@ export const events: Event[] = [
     ],
     presale: "15 €", // à vérifier
     door: "",
-    ticketUrl: "",
+    ticketUrl: "https://entradas.salazero.com/es/salazero/evento/between-the-frost-eternal-hunt-excm",
     status: "upcoming",
   },
   {
