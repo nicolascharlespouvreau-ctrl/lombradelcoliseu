@@ -63,11 +63,12 @@ export const events: Event[] = [
   },
 ];
 
-export const merch = [
+export const merch: { name: string; price: string; soldOut?: boolean; image?: string }[] = [
   {
-    name: "L'Ombra Tank Top — Men",
+    name: "Black Metal Ist Krieg — Tank Top",
     price: "20 €",
-    soldOut: true,
+    soldOut: true, // à vérifier
+    image: "/merch/black-metal-ist-krieg-tank.jpg",
   },
 ];
 

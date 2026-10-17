@@ -314,9 +314,9 @@ export default function Site() {
             <div className="merch">
               {merch.map((m) => (
                 <article key={m.name} className="product">
-                  <div className="product-img" aria-hidden="true">
+                  <div className={m.image ? "product-img photo" : "product-img"}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logo.webp" alt="" loading="lazy" />
+                    <img src={m.image || "/logo.webp"} alt={m.image ? m.name : ""} loading="lazy" />
                   </div>
                   <div className="product-info">
                     <h3>{m.name}</h3>

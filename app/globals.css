@@ -194,6 +194,8 @@ h1 {
   background: radial-gradient(circle at 50% 40%, #1d1513, #0a0807 70%);
 }
 .product-img img { width: 62%; height: auto; opacity: .9; filter: drop-shadow(0 0 30px rgba(158, 27, 27, .35)); }
+.product-img.photo { background: #120f0e; }
+.product-img.photo img { width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: none; }
 .product-img span { font-family: var(--black); font-size: 3.4rem; color: rgba(232, 224, 212, .85); transform: rotate(-6deg); text-shadow: 0 0 30px rgba(158, 27, 27, .5); }
 .product-info { padding: 18px 22px 22px; }
 .product-info h3 { font-family: var(--roman); font-size: 1rem; letter-spacing: .06em; margin-bottom: 6px; }
