@@ -271,11 +271,22 @@ export default function Site() {
                   {past.map((e) => {
                     const d = formatDate(e.date, lang);
                     return (
-                      <li key={e.slug}>
+                      <li key={e.slug} className={e.poster ? "has-poster" : ""}>
+                        {e.poster && (
+                          <a className="past-poster" href={e.poster} target="_blank" rel="noreferrer" aria-label={t.viewPoster}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={e.poster} alt={e.title} loading="lazy" />
+                          </a>
+                        )}
                         <span className="past-date">
                           {d.day} {d.month} {d.year}
                         </span>
-                        <span className="past-title">{e.title}</span>
+                        <span className="past-main">
+                          <span className="past-title">{e.title}</span>
+                          {e.lineup.length > 0 && (
+                            <span className="past-lineup">{e.lineup.map((b) => b.name).join(" · ")}</span>
+                          )}
+                        </span>
                         <span className="past-venue">{e.venue}</span>
                       </li>
                     );

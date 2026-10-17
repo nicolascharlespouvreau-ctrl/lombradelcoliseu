@@ -53,12 +53,16 @@ export const events: Event[] = [
     status: "upcoming",
   },
   {
-    slug: "tgn-black-metal-night-i",
-    title: "TGN Black Metal Night I",
+    slug: "tarragona-black-metal-night-i",
+    title: "Tarragona Black Metal Night I",
     date: "2026-06-19",
     venue: "Sala Zero",
     city: "Tarragona",
-    lineup: [],
+    lineup: [
+      { name: "Gorgon", genre: "Black Metal" },
+      { name: "Corpus Diavolis", genre: "Black Metal" },
+    ],
+    poster: "/events/tarragona-black-metal-night-i.jpg",
     status: "past",
   },
 ];
