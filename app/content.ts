@@ -1,0 +1,198 @@
+// Tout le contenu du site est ici. Pour ajouter un concert : copie un bloc dans `events`.
+// Les dates sont au format AAAA-MM-JJ. `status: "upcoming"` = à venir, `"past"` = archive.
+
+export type Lang = "en" | "es" | "ca";
+export const langs: Lang[] = ["en", "es", "ca"];
+
+export const social = {
+  instagram: "https://www.instagram.com/l_ombra_del_coliseu/",
+  facebook: "https://www.facebook.com/profile.php?id=61578273165908",
+  tiktok: "https://www.tiktok.com/@lombradelcoliseu",
+};
+
+// À remplir : adresse e-mail de contact de l'asso (booking, presse).
+export const contactEmail = "";
+
+export type Event = {
+  slug: string;
+  title: string;
+  date: string; // AAAA-MM-JJ
+  doors?: string;
+  start?: string;
+  venue: string;
+  city: string;
+  lineup: { name: string; genre: string }[];
+  presale?: string; // prix anticipada
+  door?: string; // prix taquilla
+  ticketUrl?: string;
+  status: "upcoming" | "past";
+};
+
+export const events: Event[] = [
+  {
+    slug: "between-the-frost-eternal-hunt",
+    title: "Between The Frost + Eternal Hunt",
+    date: "2026-10-30",
+    doors: "20:00",
+    start: "20:30",
+    venue: "Sala Zero",
+    city: "Tarragona",
+    lineup: [
+      { name: "Between The Frost", genre: "Black Metal" },
+      { name: "Eternal Hunt", genre: "Black Metal" },
+    ],
+    presale: "15 €", // à vérifier
+    door: "",
+    ticketUrl: "",
+    status: "upcoming",
+  },
+  {
+    slug: "tgn-black-metal-night-i",
+    title: "TGN Black Metal Night I",
+    date: "2026-06-19",
+    venue: "Sala Zero",
+    city: "Tarragona",
+    lineup: [],
+    status: "past",
+  },
+];
+
+export const merch = [
+  {
+    name: "L'Ombra Tank Top — Men",
+    price: "20 €",
+    soldOut: true,
+  },
+];
+
+type Dict = Record<string, string>;
+
+export const t: Record<Lang, Dict> = {
+  en: {
+    navEvents: "Events",
+    navAbout: "Manifesto",
+    navMerch: "Merch",
+    navBooking: "Booking",
+    heroKicker: "Underground collective · Tarragona",
+    heroSub: "Black metal, gothic, post-punk and industrial nights in the shadow of the old amphitheatre.",
+    nextShow: "Next ritual",
+    tickets: "Tickets",
+    ticketsSoon: "Tickets soon",
+    doors: "Doors",
+    start: "Start",
+    presale: "Presale",
+    door: "At the door",
+    upcoming: "Upcoming",
+    past: "Past rituals",
+    noUpcoming: "New dates are being forged. Follow us to be the first to know.",
+    aboutTitle: "Uncompromising sound since the depths",
+    about1:
+      "L'Ombra del Coliseu is a Tarragona-based collective dedicated to extreme and dark music. We bring black metal, gothic, post-punk and industrial bands to the city — without compromise and without commercial dilution.",
+    about2:
+      "Our goal is simple: build a real community around the underground scene, give local bands a stage worthy of them, and bring international acts to places they would never otherwise play.",
+    genres: "What we summon",
+    merchTitle: "Ombra Harvest",
+    merchSub: "Official merch. Limited runs, never reprinted.",
+    soldOut: "Sold out",
+    bookingTitle: "Play with us",
+    bookingSub:
+      "Are you a band, a booker or a venue? Tell us about your project. We answer every serious proposal.",
+    fName: "Name / band",
+    fEmail: "E-mail",
+    fLink: "Link to your music (Bandcamp, Spotify…)",
+    fMsg: "Your message",
+    fSend: "Send",
+    fSent: "Received. We'll get back to you soon.",
+    newsTitle: "Get the latest show announcements",
+    newsPlaceholder: "Your e-mail",
+    newsBtn: "Join",
+    newsDone: "You're on the list.",
+    footer: "Uncompromising sound since the depths",
+  },
+  es: {
+    navEvents: "Eventos",
+    navAbout: "Manifiesto",
+    navMerch: "Merch",
+    navBooking: "Booking",
+    heroKicker: "Colectivo underground · Tarragona",
+    heroSub: "Noches de black metal, gótico, post-punk e industrial a la sombra del viejo anfiteatro.",
+    nextShow: "Próximo ritual",
+    tickets: "Entradas",
+    ticketsSoon: "Entradas pronto",
+    doors: "Puertas",
+    start: "Inicio",
+    presale: "Anticipada",
+    door: "Taquilla",
+    upcoming: "Próximos",
+    past: "Rituales pasados",
+    noUpcoming: "Se están forjando nuevas fechas. Síguenos para enterarte el primero.",
+    aboutTitle: "Sonido sin concesiones desde las profundidades",
+    about1:
+      "L'Ombra del Coliseu es un colectivo de Tarragona dedicado a la música extrema y oscura. Traemos a la ciudad bandas de black metal, gótico, post-punk e industrial, sin concesiones y sin dilución comercial.",
+    about2:
+      "Nuestro objetivo es sencillo: crear una comunidad real en torno a la escena underground, dar a las bandas locales un escenario a su altura y traer grupos internacionales a lugares donde nunca tocarían.",
+    genres: "Lo que invocamos",
+    merchTitle: "Ombra Harvest",
+    merchSub: "Merch oficial. Tiradas limitadas, nunca reeditadas.",
+    soldOut: "Agotado",
+    bookingTitle: "Toca con nosotros",
+    bookingSub:
+      "¿Eres una banda, un booker o una sala? Cuéntanos tu proyecto. Respondemos a toda propuesta seria.",
+    fName: "Nombre / banda",
+    fEmail: "E-mail",
+    fLink: "Enlace a tu música (Bandcamp, Spotify…)",
+    fMsg: "Tu mensaje",
+    fSend: "Enviar",
+    fSent: "Recibido. Te responderemos pronto.",
+    newsTitle: "Recibe los próximos conciertos",
+    newsPlaceholder: "Tu e-mail",
+    newsBtn: "Unirme",
+    newsDone: "Ya estás en la lista.",
+    footer: "Sonido sin concesiones desde las profundidades",
+  },
+  ca: {
+    navEvents: "Esdeveniments",
+    navAbout: "Manifest",
+    navMerch: "Merch",
+    navBooking: "Booking",
+    heroKicker: "Col·lectiu underground · Tarragona",
+    heroSub: "Nits de black metal, gòtic, post-punk i industrial a l'ombra del vell amfiteatre.",
+    nextShow: "Proper ritual",
+    tickets: "Entrades",
+    ticketsSoon: "Entrades aviat",
+    doors: "Portes",
+    start: "Inici",
+    presale: "Anticipada",
+    door: "Taquilla",
+    upcoming: "Propers",
+    past: "Rituals passats",
+    noUpcoming: "S'estan forjant noves dates. Segueix-nos per saber-ho el primer.",
+    aboutTitle: "So sense concessions des de les profunditats",
+    about1:
+      "L'Ombra del Coliseu és un col·lectiu de Tarragona dedicat a la música extrema i fosca. Portem a la ciutat bandes de black metal, gòtic, post-punk i industrial, sense concessions i sense dilució comercial.",
+    about2:
+      "El nostre objectiu és senzill: crear una comunitat real al voltant de l'escena underground, donar a les bandes locals un escenari a la seva altura i portar grups internacionals a llocs on mai no tocarien.",
+    genres: "El que invoquem",
+    merchTitle: "Ombra Harvest",
+    merchSub: "Merch oficial. Tirades limitades, mai reeditades.",
+    soldOut: "Esgotat",
+    bookingTitle: "Toca amb nosaltres",
+    bookingSub:
+      "Ets una banda, un booker o una sala? Explica'ns el teu projecte. Responem a tota proposta seriosa.",
+    fName: "Nom / banda",
+    fEmail: "E-mail",
+    fLink: "Enllaç a la teva música (Bandcamp, Spotify…)",
+    fMsg: "El teu missatge",
+    fSend: "Enviar",
+    fSent: "Rebut. Et respondrem aviat.",
+    newsTitle: "Rep els propers concerts",
+    newsPlaceholder: "El teu e-mail",
+    newsBtn: "Apuntar-me",
+    newsDone: "Ja ets a la llista.",
+    footer: "So sense concessions des de les profunditats",
+  },
+};
+
+export const genres = ["Black Metal", "Gothic", "Post-Punk", "Industrial"];
+
+export const dateLocale: Record<Lang, string> = { en: "en-GB", es: "es-ES", ca: "ca-ES" };
