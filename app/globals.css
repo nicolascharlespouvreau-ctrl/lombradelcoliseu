@@ -368,3 +368,25 @@ h1 {
 .thumb { width: 56px; height: 56px; border: 1px solid var(--line); background: var(--bg); padding: 3px; transition: border-color .2s; }
 .thumb img { width: 100%; height: 100%; object-fit: contain; }
 .thumb.active, .thumb:hover { border-color: var(--blood); }
+
+/* ─── Rejoindre la horde ─── */
+.horde { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 28px; align-items: start; }
+.horde-card { padding: 34px 32px; background: var(--card); border: 1px solid var(--line); display: grid; gap: 16px; }
+.horde-card.member { border-color: var(--blood); background: linear-gradient(160deg, rgba(158, 27, 27, .16), var(--card) 55%); }
+.horde-card h3 { font-family: var(--roman); font-size: 1.35rem; letter-spacing: .1em; text-transform: uppercase; }
+.horde-text { color: var(--muted); }
+.member-price { font-family: var(--roman); font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--bone); }
+.member-price span { font-size: .9rem; font-weight: 400; letter-spacing: .15em; color: var(--muted); }
+.perks { list-style: none; display: grid; gap: 10px; margin: 4px 0 8px; }
+.perks li { position: relative; padding-left: 26px; font-size: .95rem; }
+.perks li::before { content: "\2720"; position: absolute; left: 0; top: 0; color: var(--blood); }
+.roles { border: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.roles legend { font-size: .8rem; letter-spacing: .06em; color: var(--muted); margin-bottom: 8px; }
+.form .role { display: inline-flex; align-items: center; gap: 0; cursor: pointer; }
+.role input { position: absolute; opacity: 0; pointer-events: none; }
+.role span { padding: 7px 13px; border: 1px solid var(--line); font-size: .82rem; color: var(--muted); transition: border-color .2s, color .2s, background .2s; }
+.role:hover span { border-color: var(--muted); color: var(--bone); }
+.role input:checked + span { border-color: var(--blood); background: rgba(158, 27, 27, .25); color: var(--bone); }
+.role input:focus-visible + span { outline: 1px solid var(--gold); outline-offset: 2px; }
+@media (max-width: 860px) { .horde { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .horde-card { padding: 26px 20px; } }

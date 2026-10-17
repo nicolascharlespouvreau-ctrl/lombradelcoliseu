@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Shop from "@/components/Shop";
+import Horde from "@/components/Horde";
 import {
   events,
   genres,
@@ -168,6 +169,7 @@ export default function Site() {
   const links: [string, string][] = [
     [t.navEvents, "#events"],
     [t.navAbout, "#manifesto"],
+    [t.navHorde, "#horde"],
     [t.navMerch, "#merch"],
     [t.navBooking, "#booking"],
   ];
@@ -312,6 +314,17 @@ export default function Site() {
                 <li key={g}>{g}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* REJOINDRE LA HORDE : adhésion + bénévoles */}
+        <section id="horde" className="section">
+          <div className="container">
+            <h2 className="section-title">
+              <span>{t.hordeTitle}</span>
+            </h2>
+            <p className="section-sub">{t.hordeSub}</p>
+            <Horde lang={lang} t={t} />
           </div>
         </section>
 

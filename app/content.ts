@@ -130,10 +130,41 @@ export function formatPrice(cents: number) {
   return (cents / 100).toLocaleString("es-ES", { style: "currency", currency: "EUR" });
 }
 
+// ─── ADHÉSION & BÉNÉVOLES ────────────────────────────────────────────────────
+// Cotisation annuelle en centimes (1500 = 15,00 €). À ajuster selon les statuts de l'asso.
+export const membership = { price: 1500 };
+
+// Rôles proposés aux bénévoles (cases à cocher), dans les 3 langues, même ordre.
+export const volunteerRoles: Record<Lang, string[]> = {
+  en: ["Door & welcome", "Merch stand", "Load-in / stage", "Photo & video", "Posters & street promo", "Social media"],
+  es: ["Puerta y acogida", "Puesto de merch", "Montaje / escenario", "Foto y vídeo", "Carteles y promo en la calle", "Redes sociales"],
+  ca: ["Porta i acollida", "Parada de merch", "Muntatge / escenari", "Foto i vídeo", "Cartells i promo al carrer", "Xarxes socials"],
+};
+
 type Dict = Record<string, string>;
 
 export const t: Record<Lang, Dict> = {
   en: {
+    navHorde: "Join",
+    hordeTitle: "Join the horde",
+    hordeSub: "L'Ombra del Coliseu is a cultural association. Every show exists thanks to its members and volunteers.",
+    memberTitle: "Become a member",
+    memberPer: "/ year",
+    memberText: "Your yearly fee keeps underground shows alive in Tarragona: sound, venues, travel for the bands.",
+    memberPerk1: "A voice and a vote in the association's assembly",
+    memberPerk2: "First to know about new shows and presales",
+    memberPerk3: "Your name in the members' register of the horde",
+    memberBtn: "Become a member",
+    memberNote: "Secure payment via Stripe. Your full name is requested for the members' register.",
+    volTitle: "Volunteer",
+    volText: "Door, merch stand, load-in, photos, posters… Lend a hand on show nights and live them from the inside.",
+    volRoles: "How would you like to help?",
+    fPhone: "Phone (optional)",
+    volMsg: "Availability, experience, anything else",
+    volSend: "I'm in",
+    volSent: "Welcome to the horde. We'll contact you before the next show.",
+    memberThanksTitle: "Welcome to the horde",
+    memberThanksText: "Your membership is confirmed. You will receive a receipt by e-mail.",
     navEvents: "Events",
     navAbout: "Manifesto",
     navMerch: "Merch",
@@ -201,6 +232,26 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "View poster",
   },
   es: {
+    navHorde: "Únete",
+    hordeTitle: "Únete a la horda",
+    hordeSub: "L'Ombra del Coliseu es una asociación cultural. Cada concierto existe gracias a sus socios y voluntarios.",
+    memberTitle: "Hazte socio/a",
+    memberPer: "/ año",
+    memberText: "Tu cuota anual mantiene vivos los conciertos underground en Tarragona: sonido, salas, viajes de las bandas.",
+    memberPerk1: "Voz y voto en la asamblea de la asociación",
+    memberPerk2: "El primero en enterarte de conciertos y preventas",
+    memberPerk3: "Tu nombre en el registro de socios de la horda",
+    memberBtn: "Hacerme socio/a",
+    memberNote: "Pago seguro con Stripe. Se pide tu nombre completo para el registro de socios.",
+    volTitle: "Voluntariado",
+    volText: "Puerta, puesto de merch, montaje, fotos, carteles… Echa una mano las noches de concierto y vívelas desde dentro.",
+    volRoles: "¿Cómo quieres ayudar?",
+    fPhone: "Teléfono (opcional)",
+    volMsg: "Disponibilidad, experiencia, lo que quieras contarnos",
+    volSend: "Me apunto",
+    volSent: "Bienvenido/a a la horda. Te contactaremos antes del próximo concierto.",
+    memberThanksTitle: "Bienvenido/a a la horda",
+    memberThanksText: "Tu cuota está confirmada. Recibirás el recibo por e-mail.",
     navEvents: "Eventos",
     navAbout: "Manifiesto",
     navMerch: "Merch",
@@ -268,6 +319,26 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "Ver cartel",
   },
   ca: {
+    navHorde: "Uneix-te",
+    hordeTitle: "Uneix-te a l'horda",
+    hordeSub: "L'Ombra del Coliseu és una associació cultural. Cada concert existeix gràcies als seus socis i voluntaris.",
+    memberTitle: "Fes-te soci/a",
+    memberPer: "/ any",
+    memberText: "La teva quota anual manté vius els concerts underground a Tarragona: so, sales, viatges de les bandes.",
+    memberPerk1: "Veu i vot a l'assemblea de l'associació",
+    memberPerk2: "El primer a saber els concerts i les preventes",
+    memberPerk3: "El teu nom al registre de socis de l'horda",
+    memberBtn: "Fer-me soci/a",
+    memberNote: "Pagament segur amb Stripe. Es demana el teu nom complet per al registre de socis.",
+    volTitle: "Voluntariat",
+    volText: "Porta, parada de merch, muntatge, fotos, cartells… Dona un cop de mà les nits de concert i viu-les des de dins.",
+    volRoles: "Com vols ajudar?",
+    fPhone: "Telèfon (opcional)",
+    volMsg: "Disponibilitat, experiència, el que vulguis explicar-nos",
+    volSend: "M'hi apunto",
+    volSent: "Benvingut/da a l'horda. Et contactarem abans del proper concert.",
+    memberThanksTitle: "Benvingut/da a l'horda",
+    memberThanksText: "La teva quota està confirmada. Rebràs el rebut per e-mail.",
     navEvents: "Esdeveniments",
     navAbout: "Manifest",
     navMerch: "Merch",
