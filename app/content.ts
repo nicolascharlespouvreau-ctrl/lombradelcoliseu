@@ -20,9 +20,12 @@ export type Event = {
   doors?: string;
   start?: string;
   venue: string;
+  address?: string;
   city: string;
-  lineup: { name: string; genre: string }[];
+  lineup: { name: string; genre: string; origin?: string }[];
+  poster?: string; // chemin de l'affiche dans /public
   presale?: string; // prix anticipada
+  presaleFee?: string; // frais de gestion billetterie
   door?: string; // prix taquilla
   ticketUrl?: string;
   status: "upcoming" | "past";
@@ -36,13 +39,16 @@ export const events: Event[] = [
     doors: "20:00",
     start: "20:30",
     venue: "Sala Zero",
+    address: "Carrer de Sant Magí, 12",
     city: "Tarragona",
     lineup: [
-      { name: "Between The Frost", genre: "Black Metal" },
-      { name: "Eternal Hunt", genre: "Black Metal" },
+      { name: "Between The Frost", genre: "Black Metal", origin: "TGN" },
+      { name: "Eternal Hunt", genre: "Black Metal", origin: "FR" },
     ],
-    presale: "15 €", // à vérifier
-    door: "",
+    poster: "/events/tarraco-black-metal-night-ii.jpg",
+    presale: "15 €",
+    presaleFee: "2 €",
+    door: "20 €",
     ticketUrl: "https://entradas.salazero.com/es/salazero/evento/between-the-frost-eternal-hunt-excm",
     status: "upcoming",
   },
@@ -108,6 +114,9 @@ export const t: Record<Lang, Dict> = {
     newsBtn: "Join",
     newsDone: "You're on the list.",
     footer: "Uncompromising sound since the depths",
+    fee: "+ {fee} booking fee",
+    supporters: "With the support of",
+    viewPoster: "View poster",
   },
   es: {
     navEvents: "Eventos",
@@ -149,6 +158,9 @@ export const t: Record<Lang, Dict> = {
     newsBtn: "Unirme",
     newsDone: "Ya estás en la lista.",
     footer: "Sonido sin concesiones desde las profundidades",
+    fee: "+ {fee} gastos de gestión",
+    supporters: "Con el apoyo de",
+    viewPoster: "Ver cartel",
   },
   ca: {
     navEvents: "Esdeveniments",
@@ -190,8 +202,21 @@ export const t: Record<Lang, Dict> = {
     newsBtn: "Apuntar-me",
     newsDone: "Ja ets a la llista.",
     footer: "So sense concessions des de les profunditats",
+    fee: "+ {fee} despeses de gestió",
+    supporters: "Amb el suport de",
+    viewPoster: "Veure cartell",
   },
 };
+
+// Partenaires affichés en pied de page
+export const supporters = [
+  "Diputació de Tarragona",
+  "Ajuntament de Tarragona",
+  "Generalitat de Catalunya · Departament de Cultura",
+  "Radar Palmfest",
+  "Estrella Damm",
+  "Sala Zero",
+];
 
 export const genres = ["Black Metal", "Gothic", "Post-Punk", "Industrial"];
 

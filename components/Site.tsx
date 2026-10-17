@@ -4,6 +4,7 @@ import {
   events,
   merch,
   genres,
+  supporters,
   social,
   contactEmail,
   t as dict,
@@ -59,7 +60,13 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
   const t = dict[lang];
   const d = formatDate(e.date, lang);
   return (
-    <article className={featured ? "event featured" : "event"}>
+    <article className={(featured ? "event featured" : "event") + (e.poster ? " has-poster" : "")}>
+      {e.poster && (
+        <a className="event-poster" href={e.poster} target="_blank" rel="noreferrer" aria-label={t.viewPoster}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={e.poster} alt={e.title} loading="lazy" />
+        </a>
+      )}
       <div className="event-date">
         <span className="event-day">{d.day}</span>
         <span className="event-month">{d.month}</span>
@@ -67,7 +74,8 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
       </div>
       <div className="event-body">
         <p className="event-meta">
-          {d.weekday} · {e.venue}, {e.city}
+          {d.weekday} · {e.venue}
+          {e.address ? `, ${e.address}` : ""}, {e.city}
         </p>
         <h3>{e.title}</h3>
         {e.lineup.length > 0 && e.lineup.every((b) => e.title.includes(b.name)) && (
@@ -77,7 +85,7 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
           <ul className="lineup">
             {e.lineup.map((b) => (
               <li key={b.name}>
-                {b.name} <span>{b.genre}</span>
+                {b.name} <span>{b.genre}{b.origin ? ` · ${b.origin}` : ""}</span>
               </li>
             ))}
           </ul>
@@ -97,6 +105,7 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
             {e.presale && (
               <span>
                 {t.presale} {e.presale}
+                {e.presaleFee ? ` ${t.fee.replace("{fee}", e.presaleFee)}` : ""}
               </span>
             )}
             {e.door && (
@@ -420,6 +429,14 @@ export default function Site() {
               </a>
             </li>
           </ul>
+          <div className="supporters">
+            <p>{t.supporters}</p>
+            <ul>
+              {supporters.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </div>
           <p className="copy">© {new Date().getFullYear()} L&apos;Ombra del Coliseu · Tarragona</p>
         </div>
       </footer>

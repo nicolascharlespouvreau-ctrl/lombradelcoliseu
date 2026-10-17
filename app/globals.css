@@ -146,7 +146,8 @@ h1 {
 .event-day { font-size: 3rem; font-weight: 700; line-height: 1; }
 .event-month { font-size: .85rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blood); margin-top: 6px; }
 .event-year { font-size: .75rem; color: var(--muted); }
-.event-meta { font-size: .82rem; color: var(--muted); text-transform: capitalize; }
+.event-meta { font-size: .82rem; color: var(--muted); }
+.event-meta::first-letter { text-transform: uppercase; }
 .event h3 { font-family: var(--roman); font-size: 1.5rem; letter-spacing: .04em; margin: 4px 0 10px; }
 .event-genres { font-size: .8rem; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; }
 .lineup { display: flex; flex-wrap: wrap; gap: 6px 22px; }
@@ -161,6 +162,16 @@ h1 {
   border-bottom: 1px solid var(--line); color: var(--muted);
 }
 .past-title { color: var(--bone); font-family: var(--roman); letter-spacing: .04em; }
+
+.event.has-poster { grid-template-columns: 170px 110px 1fr auto; }
+.event-poster { display: block; border: 1px solid var(--line); transition: transform .3s, border-color .3s; }
+.event-poster:hover { transform: scale(1.02); border-color: var(--blood); }
+.event-poster img { display: block; width: 100%; height: auto; }
+
+/* Supporters */
+.supporters { margin-top: 30px; display: grid; gap: 10px; justify-items: center; }
+.supporters p { font-family: var(--roman); font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.supporters ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; font-size: .82rem; color: #a99d92; }
 
 /* Manifesto */
 .manifesto { background: var(--bg-2); border-block: 1px solid var(--line); text-align: center; }
@@ -239,6 +250,8 @@ h1 {
   .event-date { padding-right: 18px; }
   .event-day { font-size: 2.3rem; }
   .event-cta { grid-column: 1 / -1; }
+  .event.has-poster { grid-template-columns: 80px minmax(0, 1fr); }
+  .event.has-poster .event-poster { grid-column: 1 / -1; max-width: 360px; justify-self: center; width: 100%; }
   .event-cta .btn { width: 100%; }
 }
 @media (max-width: 560px) {
