@@ -6,7 +6,7 @@ import {
   events,
   genres,
   supporters,
-  social,
+  socialLinks,
   contactEmail,
   t as dict,
   langs,
@@ -351,22 +351,14 @@ export default function Site() {
               </h2>
               <p className="section-sub left">{t.bookingSub}</p>
               <ul className="socials">
-                <li>
-                  <a href={social.instagram} target="_blank" rel="noreferrer">
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a href={social.facebook} target="_blank" rel="noreferrer">
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href={social.tiktok} target="_blank" rel="noreferrer">
-                    TikTok
-                  </a>
-                </li>
-              </ul>
+            {socialLinks.map((l) => (
+              <li key={l.label}>
+                <a href={l.url} target="_blank" rel="noreferrer">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
             </div>
             {booked ? (
               <div className="form-done" role="status">
@@ -429,21 +421,13 @@ export default function Site() {
           <img src="/logo.webp" alt="L'Ombra del Coliseu" className="footer-logo" loading="lazy" width={640} height={714} />
           <p className="footer-motto">{t.footer}</p>
           <ul className="socials center">
-            <li>
-              <a href={social.instagram} target="_blank" rel="noreferrer">
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a href={social.facebook} target="_blank" rel="noreferrer">
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a href={social.tiktok} target="_blank" rel="noreferrer">
-                TikTok
-              </a>
-            </li>
+            {socialLinks.map((l) => (
+              <li key={l.label}>
+                <a href={l.url} target="_blank" rel="noreferrer">
+                  {l.label}
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="supporters">
             <p>{t.supporters}</p>

@@ -8,7 +8,16 @@ export const social = {
   instagram: "https://www.instagram.com/l_ombra_del_coliseu/",
   facebook: "https://www.facebook.com/profile.php?id=61578273165908",
   tiktok: "https://www.tiktok.com/@lombradelcoliseu",
+  realm: "https://www.realmapp.net/univers/fa247645-ffa6-4854-992d-6d716a3688c7",
 };
+
+// Liens affichés (booking + pied de page), dans cet ordre.
+export const socialLinks: { label: string; url: string }[] = [
+  { label: "Instagram", url: social.instagram },
+  { label: "Facebook", url: social.facebook },
+  { label: "TikTok", url: social.tiktok },
+  { label: "Realm", url: social.realm },
+];
 
 // À remplir : adresse e-mail de contact de l'asso (booking, presse).
 export const contactEmail = "";
