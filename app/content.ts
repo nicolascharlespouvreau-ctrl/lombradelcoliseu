@@ -64,7 +64,10 @@ export const events: Event[] = [
           es: "Veteranos del black metal: primera demo en 1996, primer álbum Instinct of Surliness en 1998, último disco de estudio Inferno's Conflagration.",
           ca: "Veterans del black metal: primera maqueta el 1996, primer àlbum Instinct of Surliness el 1998, últim disc d'estudi Inferno's Conflagration.",
         },
-        links: [{ label: "Bandcamp", url: "https://betweenthefrost.bandcamp.com" }],
+        links: [
+          { label: "Bandcamp", url: "https://betweenthefrost.bandcamp.com" },
+          { label: "Instagram", url: "https://www.instagram.com/betweenthefrost/" },
+        ],
       },
       {
         name: "Eternal Hunt",
