@@ -10,6 +10,7 @@ const KEY = "ombra-cart";
 
 function ProductCard({ p, t, onAdd }: { p: Product; t: Dict; onAdd: (p: Product, size?: string) => void }) {
   const [size, setSize] = useState<string>("");
+  const [view, setView] = useState(p.image);
   const [error, setError] = useState(false);
   const sold = p.status === "soldout";
   const pre = p.status === "preorder";
@@ -18,9 +19,25 @@ function ProductCard({ p, t, onAdd }: { p: Product; t: Dict; onAdd: (p: Product,
     <article className="product">
       <div className={p.image ? "product-img photo" : "product-img"}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={p.image || "/logo.webp"} alt={p.image ? p.name : ""} loading="lazy" />
+        <img src={view || "/logo.webp"} alt={p.image ? p.name : ""} loading="lazy" />
         {pre && <span className="ribbon">{t.preorder}</span>}
       </div>
+      {p.gallery && p.gallery.length > 1 && (
+        <div className="thumbs">
+          {p.gallery.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              className={src === view ? "thumb active" : "thumb"}
+              onClick={() => setView(src)}
+              aria-label={`${p.name} ${i + 1}`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
       <div className="product-info">
         <h3>{p.name}</h3>
         <p className="product-price">

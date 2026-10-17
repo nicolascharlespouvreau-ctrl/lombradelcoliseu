@@ -194,7 +194,8 @@ h1 {
 
 /* Merch */
 .merch { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.merch .product { width: min(320px, 100%); }
+.merch .product { width: min(260px, 100%); }
+@media (max-width: 600px) { .merch .product { width: min(340px, 100%); } }
 .product { background: var(--card); border: 1px solid var(--line); }
 .product-img {
   aspect-ratio: 4/5; display: grid; place-items: center; overflow: hidden;
@@ -362,3 +363,8 @@ h1 {
 .thanks-logo { width: min(220px, 60vw); height: auto; }
 .thanks h1 { font-family: var(--roman); font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.4rem); letter-spacing: .08em; line-height: 1.2; text-shadow: none; }
 .thanks p { max-width: 460px; color: var(--muted); }
+
+.thumbs { display: flex; gap: 8px; padding: 10px 22px 0; }
+.thumb { width: 56px; height: 56px; border: 1px solid var(--line); background: var(--bg); padding: 3px; transition: border-color .2s; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; }
+.thumb.active, .thumb:hover { border-color: var(--blood); }

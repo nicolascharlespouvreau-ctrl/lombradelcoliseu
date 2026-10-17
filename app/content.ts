@@ -78,6 +78,7 @@ export type Product = {
   sizes?: string[];
   status: ProductStatus;
   image?: string;
+  gallery?: string[]; // vues supplémentaires (miniatures cliquables)
 };
 
 export const merch: Product[] = [
@@ -104,6 +105,14 @@ export const merch: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     status: "preorder",
     image: "/merch/logo-tank-women.webp",
+  },
+  {
+    id: "tarraco-mug",
+    name: "Tarraco Black Metal Night — Mug",
+    price: 1000,
+    status: "preorder",
+    image: "/merch/tarraco-mug-1.webp",
+    gallery: ["/merch/tarraco-mug-1.webp", "/merch/tarraco-mug-2.webp", "/merch/tarraco-mug-3.webp"],
   },
 ];
 
