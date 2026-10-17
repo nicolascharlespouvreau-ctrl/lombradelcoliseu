@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Shop from "@/components/Shop";
 import Horde from "@/components/Horde";
+import EarlyBird from "@/components/EarlyBird";
 import {
   events,
   genres,
@@ -116,6 +117,7 @@ function EventCard({ e, lang, featured = false }: { e: Event; lang: Lang; featur
             )}
           </div>
         )}
+        {e.status === "upcoming" && e.earlyBird && <EarlyBird e={e} lang={lang} t={t} />}
       </div>
       {e.status === "upcoming" && (
         <div className="event-cta">

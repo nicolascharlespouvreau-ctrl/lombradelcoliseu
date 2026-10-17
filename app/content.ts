@@ -28,6 +28,9 @@ export type Event = {
   presaleFee?: string; // frais de gestion billetterie
   door?: string; // prix taquilla
   ticketUrl?: string;
+  // Billets early bird réservés aux membres, vendus sur le site (Stripe).
+  // price en centimes ; quota = nombre max de billets ; until = dernier jour de vente (AAAA-MM-JJ).
+  earlyBird?: { price: number; quota: number; until: string };
   status: "upcoming" | "past";
 };
 
@@ -50,6 +53,7 @@ export const events: Event[] = [
     presaleFee: "2 €",
     door: "20 €",
     ticketUrl: "https://entradas.salazero.com/es/salazero/evento/between-the-frost-eternal-hunt-excm",
+    earlyBird: { price: 1200, quota: 30, until: "2026-10-29" }, // à confirmer
     status: "upcoming",
   },
   {
@@ -131,8 +135,8 @@ export function formatPrice(cents: number) {
 }
 
 // ─── ADHÉSION & BÉNÉVOLES ────────────────────────────────────────────────────
-// Cotisation annuelle en centimes (1500 = 15,00 €). À ajuster selon les statuts de l'asso.
-export const membership = { price: 1500 };
+// Cotisation annuelle en centimes (500 = 5,00 €). À ajuster selon les statuts de l'asso.
+export const membership = { price: 500 };
 
 // Rôles proposés aux bénévoles (cases à cocher), dans les 3 langues, même ordre.
 export const volunteerRoles: Record<Lang, string[]> = {
@@ -145,6 +149,17 @@ type Dict = Record<string, string>;
 
 export const t: Record<Lang, Dict> = {
   en: {
+    ebTitle: "Members early bird",
+    ebText: "One ticket per member, while stock lasts. Enter the e-mail you used to join.",
+    ebLeft: "{n} left",
+    ebBtn: "Get my ticket",
+    ebNotMember: "No active membership found for this e-mail.",
+    ebJoin: "Become a member",
+    ebAlready: "You already have your early bird ticket for this show.",
+    ebSoldOut: "Early bird tickets are sold out.",
+    ebClosed: "Early bird sales are closed.",
+    ebThanksTitle: "Your ticket is booked",
+    ebThanksText: "Your name is on the list at the door. Bring the confirmation e-mail and an ID.",
     navHorde: "Join",
     hordeTitle: "Join the horde",
     hordeSub: "L'Ombra del Coliseu is a cultural association. Every show exists thanks to its members and volunteers.",
@@ -152,7 +167,7 @@ export const t: Record<Lang, Dict> = {
     memberPer: "/ year",
     memberText: "Your yearly fee keeps underground shows alive in Tarragona: sound, venues, travel for the bands.",
     memberPerk1: "A voice and a vote in the association's assembly",
-    memberPerk2: "First to know about new shows and presales",
+    memberPerk2: "Early bird tickets reserved for members at every show",
     memberPerk3: "Your name in the members' register of the horde",
     memberBtn: "Become a member",
     memberNote: "Secure payment via Stripe. Your full name is requested for the members' register.",
@@ -232,6 +247,17 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "View poster",
   },
   es: {
+    ebTitle: "Early bird socios",
+    ebText: "Una entrada por socio, hasta agotar existencias. Indica el e-mail con el que te hiciste socio/a.",
+    ebLeft: "Quedan {n}",
+    ebBtn: "Conseguir mi entrada",
+    ebNotMember: "No encontramos una cuota activa con este e-mail.",
+    ebJoin: "Hazte socio/a",
+    ebAlready: "Ya tienes tu entrada early bird para este concierto.",
+    ebSoldOut: "Las entradas early bird están agotadas.",
+    ebClosed: "La venta early bird está cerrada.",
+    ebThanksTitle: "Tu entrada está reservada",
+    ebThanksText: "Tu nombre está en la lista de la puerta. Trae el e-mail de confirmación y tu DNI.",
     navHorde: "Únete",
     hordeTitle: "Únete a la horda",
     hordeSub: "L'Ombra del Coliseu es una asociación cultural. Cada concierto existe gracias a sus socios y voluntarios.",
@@ -239,7 +265,7 @@ export const t: Record<Lang, Dict> = {
     memberPer: "/ año",
     memberText: "Tu cuota anual mantiene vivos los conciertos underground en Tarragona: sonido, salas, viajes de las bandas.",
     memberPerk1: "Voz y voto en la asamblea de la asociación",
-    memberPerk2: "El primero en enterarte de conciertos y preventas",
+    memberPerk2: "Entradas early bird reservadas a socios en cada concierto",
     memberPerk3: "Tu nombre en el registro de socios de la horda",
     memberBtn: "Hacerme socio/a",
     memberNote: "Pago seguro con Stripe. Se pide tu nombre completo para el registro de socios.",
@@ -319,6 +345,17 @@ export const t: Record<Lang, Dict> = {
     viewPoster: "Ver cartel",
   },
   ca: {
+    ebTitle: "Early bird socis",
+    ebText: "Una entrada per soci, fins a exhaurir existències. Indica l'e-mail amb què et vas fer soci/a.",
+    ebLeft: "Queden {n}",
+    ebBtn: "Aconseguir la meva entrada",
+    ebNotMember: "No trobem cap quota activa amb aquest e-mail.",
+    ebJoin: "Fes-te soci/a",
+    ebAlready: "Ja tens la teva entrada early bird per a aquest concert.",
+    ebSoldOut: "Les entrades early bird estan exhaurides.",
+    ebClosed: "La venda early bird està tancada.",
+    ebThanksTitle: "La teva entrada està reservada",
+    ebThanksText: "El teu nom és a la llista de la porta. Porta l'e-mail de confirmació i el DNI.",
     navHorde: "Uneix-te",
     hordeTitle: "Uneix-te a l'horda",
     hordeSub: "L'Ombra del Coliseu és una associació cultural. Cada concert existeix gràcies als seus socis i voluntaris.",
@@ -326,7 +363,7 @@ export const t: Record<Lang, Dict> = {
     memberPer: "/ any",
     memberText: "La teva quota anual manté vius els concerts underground a Tarragona: so, sales, viatges de les bandes.",
     memberPerk1: "Veu i vot a l'assemblea de l'associació",
-    memberPerk2: "El primer a saber els concerts i les preventes",
+    memberPerk2: "Entrades early bird reservades als socis a cada concert",
     memberPerk3: "El teu nom al registre de socis de l'horda",
     memberBtn: "Fer-me soci/a",
     memberNote: "Pagament segur amb Stripe. Es demana el teu nom complet per al registre de socis.",

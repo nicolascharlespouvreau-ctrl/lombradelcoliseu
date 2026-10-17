@@ -390,3 +390,20 @@ h1 {
 .role input:focus-visible + span { outline: 1px solid var(--gold); outline-offset: 2px; }
 @media (max-width: 860px) { .horde { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .horde-card { padding: 26px 20px; } }
+
+/* ─── Early bird membres ─── */
+.earlybird { margin-top: 18px; padding: 16px 18px; border: 1px dashed var(--blood); background: rgba(158, 27, 27, .08); display: grid; gap: 10px; }
+.eb-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.eb-title { font-family: var(--roman); font-size: .78rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); }
+.eb-price { font-family: var(--roman); font-weight: 700; font-size: 1.3rem; }
+.eb-left { font-size: .72rem; padding: 2px 8px; background: var(--blood); letter-spacing: .1em; text-transform: uppercase; }
+.eb-text, .eb-msg { font-size: .85rem; color: var(--muted); }
+.eb-form { display: flex; gap: 0; }
+.eb-form input { flex: 1; min-width: 0; padding: 11px 14px; background: var(--bg); border: 1px solid var(--line); border-right: 0; color: var(--bone); font: inherit; font-size: .9rem; outline: none; }
+.eb-form input:focus { border-color: var(--blood); }
+.eb-form .btn { padding: 11px 18px; font-size: .75rem; white-space: nowrap; }
+.eb-join { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 560px) { .eb-form { flex-direction: column; } .eb-form input { border-right: 1px solid var(--line); border-bottom: 0; } }
+.event-body { min-width: 0; }
+.earlybird { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+@media (max-width: 560px) { .earlybird { padding: 14px; } .eb-title { letter-spacing: .15em; } }

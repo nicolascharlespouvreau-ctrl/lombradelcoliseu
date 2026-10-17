@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       success_url: `${origin}/merci?type=member&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/#horde`,
       metadata: { type: "membership", year: String(year) },
-      payment_intent_data: { description: `MEMBERSHIP ${year}` },
+      payment_intent_data: { description: `MEMBERSHIP ${year}`, metadata: { type: "membership", year: String(year) } },
     });
     return Response.json({ url: session.url });
   } catch (err) {
