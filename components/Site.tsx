@@ -191,7 +191,9 @@ export default function Site() {
 
       <header className="nav">
         <a href="#" className="logo" aria-label="L'Ombra del Coliseu">
-          L&apos;Ombra
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-sm.webp" alt="" width={44} height={49} className="logo-img" />
+          <span>L&apos;Ombra</span>
         </a>
         <nav className={menu ? "nav-links open" : "nav-links"}>
           {links.map(([label, href]) => (
@@ -224,18 +226,18 @@ export default function Site() {
           <div className="moon" aria-hidden="true" />
           <div className="hero-inner">
             <p className="kicker">{t.heroKicker}</p>
-            <h1>
-              <span className="h1-small">L&apos;</span>Ombra
-              <br />
-              <span className="h1-del">del</span> Coliseu
+            <h1 className="hero-logo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.webp" alt="L'Ombra del Coliseu" width={640} height={714} fetchPriority="high" />
             </h1>
             <p className="hero-sub">{t.heroSub}</p>
             {next && (
               <a href="#events" className="hero-next">
                 <span className="hero-next-label">{t.nextShow}</span>
-                <span className="hero-next-title">
-                  {next.lineup.map((b) => b.name).join(" + ") || next.title}
-                </span>
+                <span className="hero-next-title">{next.title}</span>
+                {next.lineup.length > 0 && next.title !== next.lineup.map((b) => b.name).join(" + ") && (
+                  <span className="hero-next-lineup">{next.lineup.map((b) => b.name).join(" · ")}</span>
+                )}
                 <span className="hero-next-meta">
                   {formatDate(next.date, lang).day} {formatDate(next.date, lang).month} · {next.venue}
                 </span>
@@ -312,7 +314,8 @@ export default function Site() {
               {merch.map((m) => (
                 <article key={m.name} className="product">
                   <div className="product-img" aria-hidden="true">
-                    <span>L&apos;Ombra</span>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/logo.webp" alt="" loading="lazy" />
                   </div>
                   <div className="product-info">
                     <h3>{m.name}</h3>
@@ -410,7 +413,8 @@ export default function Site() {
       <footer className="footer">
         <Arches className="arches footer-arches" />
         <div className="container footer-inner">
-          <p className="logo">L&apos;Ombra del Coliseu</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.webp" alt="L'Ombra del Coliseu" className="footer-logo" loading="lazy" width={640} height={714} />
           <p className="footer-motto">{t.footer}</p>
           <ul className="socials center">
             <li>
