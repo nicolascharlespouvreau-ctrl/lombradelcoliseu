@@ -58,8 +58,6 @@ ul { list-style: none; }
 }
 .logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--black); font-size: 1.9rem; line-height: 1; color: var(--bone); }
 .logo-img { width: 44px; height: auto; filter: drop-shadow(0 0 8px rgba(158, 27, 27, .35)); }
-.hero-logo { margin: 0 auto; }
-.hero-logo img { display: block; width: min(420px, 78vw); height: auto; margin: 0 auto; filter: drop-shadow(0 0 40px rgba(158, 27, 27, .35)) drop-shadow(0 10px 30px rgba(0, 0, 0, .8)); }
 .footer-logo { width: 150px; height: auto; opacity: .9; }
 .nav-links { display: flex; gap: 28px; margin-left: auto; }
 .nav-links a {

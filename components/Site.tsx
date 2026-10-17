@@ -226,9 +226,10 @@ export default function Site() {
           <div className="moon" aria-hidden="true" />
           <div className="hero-inner">
             <p className="kicker">{t.heroKicker}</p>
-            <h1 className="hero-logo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.webp" alt="L'Ombra del Coliseu" width={640} height={714} fetchPriority="high" />
+            <h1>
+              <span className="h1-small">L&apos;</span>Ombra
+              <br />
+              <span className="h1-del">del</span> Coliseu
             </h1>
             <p className="hero-sub">{t.heroSub}</p>
             {next && (
