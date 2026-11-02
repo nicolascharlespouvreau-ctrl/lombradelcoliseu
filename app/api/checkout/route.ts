@@ -70,6 +70,7 @@ export async function POST(req: Request) {
     cancel_url: `${origin}/#merch`,
     metadata: {
       delivery,
+      lang: body.lang === "ca" || body.lang === "en" ? body.lang : "es",
       preorder: hasPreorder ? "yes" : "no",
       items: summary.join(", ").slice(0, 490),
     },

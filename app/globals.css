@@ -461,3 +461,41 @@ h1 {
 .see-all { margin-top: 40px; text-align: center; }
 .see-all .btn-ghost:hover { border-color: var(--bone); color: var(--bone); background: transparent; box-shadow: none; }
 .merch-page { padding-top: 30px; }
+
+/* ─── Admin ─── */
+.admin { max-width: 860px; margin: 0 auto; padding: 32px 16px 80px; font-family: var(--body); }
+.admin h1 { font-family: var(--roman); font-size: 1.4rem; letter-spacing: .12em; text-transform: uppercase; }
+.admin-login { display: grid; justify-items: center; gap: 18px; padding-top: 12vh; text-align: center; }
+.admin-login form { display: flex; gap: 8px; width: min(360px, 100%); }
+.admin-login input { flex: 1; min-width: 0; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); color: var(--bone); font: inherit; }
+.admin-error { color: var(--ember); }
+.admin-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.admin-link { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; font-size: .85rem; background: none; border: 0; cursor: pointer; }
+.admin-tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 18px; overflow-x: auto; }
+.admin-tabs button { padding: 10px 14px; color: var(--muted); font-family: var(--roman); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; border-bottom: 2px solid transparent; white-space: nowrap; }
+.admin-tabs button.active { color: var(--bone); border-color: var(--blood); }
+.admin-count { margin-left: 6px; padding: 1px 7px; background: var(--blood); color: var(--bone); font-family: var(--body); font-size: .72rem; }
+.admin-filter { display: flex; gap: 18px; margin-bottom: 14px; font-size: .88rem; color: var(--muted); }
+.admin-order { padding: 18px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--blood); margin-bottom: 12px; display: grid; gap: 8px; }
+.admin-order.st-ready, .admin-order.st-shipped { border-left-color: var(--gold); }
+.admin-order.st-done { border-left-color: var(--line); opacity: .7; }
+.admin-order-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.admin-badge { font-size: .7rem; padding: 3px 8px; letter-spacing: .08em; text-transform: uppercase; background: var(--blood); }
+.admin-badge.st-ready, .admin-badge.st-shipped { background: var(--gold); color: var(--bg); }
+.admin-badge.st-done { background: var(--line); }
+.admin-badge.pre { background: transparent; border: 1px solid var(--muted); color: var(--muted); }
+.admin-date { font-size: .8rem; color: var(--muted); }
+.admin-total { margin-left: auto; font-family: var(--roman); }
+.admin-items { list-style: none; font-size: .95rem; }
+.admin-client, .admin-delivery { font-size: .88rem; color: var(--muted); overflow-wrap: anywhere; }
+.admin-client a { color: var(--bone); }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.admin-actions .btn { padding: 9px 14px; font-size: .7rem; }
+.admin-actions input { padding: 9px 12px; background: var(--bg); border: 1px solid var(--line); color: var(--bone); font: inherit; font-size: .88rem; min-width: 0; flex: 1 1 180px; }
+.admin-msg { font-size: .85rem; color: var(--gold); }
+.admin-empty, .admin-hint { color: var(--muted); font-size: .9rem; }
+.admin-table { overflow-x: auto; }
+.admin-table table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.admin-table th, .admin-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.admin-table th { font-family: var(--roman); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.admin-hint { margin-top: 12px; }
