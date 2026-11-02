@@ -6,7 +6,7 @@ import "@fontsource-variable/inter";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lombra-del-coliseu.vercel.app"),
+  metadataBase: new URL("https://lombradelcoliseu.cat"),
   openGraph: {
     title: "L'Ombra del Coliseu",
     description: "Underground collective · Tarragona. Next: Tarraco Black Metal Night II, 30 Oct 2026, Sala Zero.",
