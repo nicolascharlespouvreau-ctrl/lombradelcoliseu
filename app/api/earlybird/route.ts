@@ -41,7 +41,7 @@ async function isMember(stripe: Stripe, email: string) {
 
 // GET /api/earlybird?slug=… → billets restants
 export async function GET(req: Request) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
   const e = findEvent(new URL(req.url).searchParams.get("slug"));
   if (!key || !e) return Response.json({ error: "unavailable" }, { status: 503 });
   try {
@@ -54,7 +54,7 @@ export async function GET(req: Request) {
 
 // POST /api/earlybird { slug, email, lang } → URL de paiement Stripe
 export async function POST(req: Request) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!key) return Response.json({ error: "shop_closed" }, { status: 503 });
 
   let body: { slug?: string; email?: string; lang?: string };

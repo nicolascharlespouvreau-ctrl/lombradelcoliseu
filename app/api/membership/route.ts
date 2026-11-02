@@ -3,7 +3,7 @@ import { membership } from "@/app/content";
 
 // Cotisation annuelle : le montant est relu ici côté serveur, jamais depuis le navigateur.
 export async function POST(req: Request) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!key) return Response.json({ error: "shop_closed" }, { status: 503 });
 
   let lang = "";

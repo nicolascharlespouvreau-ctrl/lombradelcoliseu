@@ -8,7 +8,7 @@ type CartLine = { id: string; size?: string; qty: number };
 type Delivery = "pickup" | "spain" | "europe";
 
 export async function POST(req: Request) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!key) {
     return Response.json({ error: "shop_closed" }, { status: 503 });
   }
